@@ -9,22 +9,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var platform_browser_1 = require('@angular/platform-browser');
 var http_1 = require('@angular/http');
-var app_component_1 = require('./app.component');
-var AppModule = (function () {
-    function AppModule() {
+var PlayerService = (function () {
+    function PlayerService(http) {
+        this.players = [
+            { id: 1, name: "Mesut Ozil", team: "Arsenal" },
+            { id: 2, name: "Alexis Sanchez", team: "Arsenal" },
+            { id: 3, name: "Petr Cech", team: "Arsenal" }
+        ];
     }
-    AppModule = __decorate([
-        core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule, http_1.HttpModule],
-            declarations: [app_component_1.AppComponent],
-            providers: [],
-            bootstrap: [app_component_1.AppComponent]
-        }), 
-        __metadata('design:paramtypes', [])
-    ], AppModule);
-    return AppModule;
+    //getPlayers(): Promise<Player[]> {
+    // return this.players;
+    //}
+    PlayerService.prototype.getPlayers = function () {
+        return Promise.resolve(this.players);
+    };
+    PlayerService = __decorate([
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [http_1.Http])
+    ], PlayerService);
+    return PlayerService;
 }());
-exports.AppModule = AppModule;
-//# sourceMappingURL=app.module.js.map
+exports.PlayerService = PlayerService;
+//# sourceMappingURL=players.service.js.map

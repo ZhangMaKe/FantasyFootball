@@ -1,0 +1,18 @@
+<h2>Player</h2>
+  <ul>
+    <li *ngFor="let player of players" (click)="addPlayerToTeam(player)" [class.selected]="player === selectedPlayer">
+      <span class="badge"></span> {{hero.name}}
+    </li>
+  </ul>
+  <div *ngIf="selectedHero">
+    <h2>
+      {{selectedHero.name | uppercase}} is my hero
+    </h2>
+    <button (click)="goToDetail()">View Details</button>
+    <div>
+  <label>Hero name:</label> <input #heroName />
+  <button (click)="add(heroName.value); heroName.value=''">
+    Add
+  </button>
+</div>
+  </div>
