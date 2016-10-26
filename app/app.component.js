@@ -9,23 +9,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var players_service_1 = require('./players.service');
 var AppComponent = (function () {
-    function AppComponent(playerService) {
-        this.playerService = playerService;
+    function AppComponent() {
         this.title = 'Fantasy Football';
     }
-    AppComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.playerService.getPlayers().then(function (p) { return _this.players = p; });
-    };
     AppComponent = __decorate([
         core_1.Component({
+            moduleId: module.id,
             selector: 'my-app',
-            template: "<h1>{{title}}</h1>\n  <ul>\n    <li *ngFor=\"let player of players\">\n      <span class=\"badge\">{{player.name}}</span> {{player.team}}\n    </li>\n   </ul> ",
-            providers: [players_service_1.PlayerService]
+            templateUrl: 'app.component.html',
+            providers: []
         }), 
-        __metadata('design:paramtypes', [players_service_1.PlayerService])
+        __metadata('design:paramtypes', [])
     ], AppComponent);
     return AppComponent;
 }());

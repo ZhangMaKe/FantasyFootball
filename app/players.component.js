@@ -10,10 +10,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var players_service_1 = require('./players.service');
+var teams_service_1 = require('./teams.service');
 var PlayerComponent = (function () {
-    function PlayerComponent(playerService) {
+    function PlayerComponent(playerService, teamsService) {
+        this.playerService = playerService;
+        this.teamsService = teamsService;
     }
     PlayerComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.playerService.getPlayers().then(function (p) { return _this.players = p; });
+        this.teamsService.getTeams().then(function (t) { return _this.teams = t; });
     };
     PlayerComponent.prototype.addPlayerToTeam = function () {
     };
@@ -21,9 +27,10 @@ var PlayerComponent = (function () {
         core_1.Component({
             moduleId: module.id,
             selector: 'players',
-            templateUrl: 'players.html'
+            templateUrl: 'players.component.html',
+            providers: [players_service_1.PlayerService, teams_service_1.TeamsService]
         }), 
-        __metadata('design:paramtypes', [players_service_1.PlayerService])
+        __metadata('design:paramtypes', [players_service_1.PlayerService, teams_service_1.TeamsService])
     ], PlayerComponent);
     return PlayerComponent;
 }());

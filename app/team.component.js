@@ -9,23 +9,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var platform_browser_1 = require('@angular/platform-browser');
-var http_1 = require('@angular/http');
-var app_component_1 = require('./app.component');
-var players_component_1 = require('./players.component');
-var AppModule = (function () {
-    function AppModule() {
+var TeamComponent = (function () {
+    function TeamComponent() {
     }
-    AppModule = __decorate([
-        core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule, http_1.HttpModule],
-            declarations: [app_component_1.AppComponent, players_component_1.PlayerComponent],
-            providers: [],
-            bootstrap: [app_component_1.AppComponent]
+    TeamComponent = __decorate([
+        core_1.Component({
+            moduleId: module.id,
+            selector: 'team',
+            template: 'team.component.html'
         }), 
         __metadata('design:paramtypes', [])
-    ], AppModule);
-    return AppModule;
+    ], TeamComponent);
+    return TeamComponent;
 }());
-exports.AppModule = AppModule;
-//# sourceMappingURL=app.module.js.map
+exports.TeamComponent = TeamComponent;
+//# sourceMappingURL=team.component.js.map

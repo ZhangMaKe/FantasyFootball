@@ -9,23 +9,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var platform_browser_1 = require('@angular/platform-browser');
-var http_1 = require('@angular/http');
-var app_component_1 = require('./app.component');
-var players_component_1 = require('./players.component');
-var AppModule = (function () {
-    function AppModule() {
+var TeamsService = (function () {
+    function TeamsService() {
+        this.teams = [
+            { name: 'Arsenal' },
+            { name: 'Manchester City' },
+            { name: 'Liverpool' }
+        ];
     }
-    AppModule = __decorate([
-        core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule, http_1.HttpModule],
-            declarations: [app_component_1.AppComponent, players_component_1.PlayerComponent],
-            providers: [],
-            bootstrap: [app_component_1.AppComponent]
-        }), 
+    TeamsService.prototype.getTeams = function () {
+        return Promise.resolve(this.teams);
+    };
+    TeamsService = __decorate([
+        core_1.Injectable(), 
         __metadata('design:paramtypes', [])
-    ], AppModule);
-    return AppModule;
+    ], TeamsService);
+    return TeamsService;
 }());
-exports.AppModule = AppModule;
-//# sourceMappingURL=app.module.js.map
+exports.TeamsService = TeamsService;
+//# sourceMappingURL=teams.service.js.map
