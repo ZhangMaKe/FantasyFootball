@@ -26,6 +26,10 @@ export class PlayerComponent implements OnInit {
       this.teamsService.getTeams().then(t => this.teams = t);
     }
 
+    teamSelected(team: Team): void {
+        this.playerService.getPlayerByTeam(team.name).then(p => this.players = p);
+    }
+
 
     addPlayerToTeam(): void {
         

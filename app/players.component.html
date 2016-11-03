@@ -3,8 +3,9 @@
     <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Teams
     <span class="caret"></span></button>
     <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-      <li role="presentation" *ngFor="let team of teams"><a role="menuitem" tabindex="-1" href="#">{{team.name}}</a></li>
-
+      <li role="presentation" *ngFor="let team of teams">
+        <a role="menuitem" tabindex="-1" href="#" (click)="teamSelected(team)">{{team.name}}</a>
+      </li>
     </ul>
   </div>
   <div>

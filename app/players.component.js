@@ -21,6 +21,10 @@ var PlayerComponent = (function () {
         this.playerService.getPlayers().then(function (p) { return _this.players = p; });
         this.teamsService.getTeams().then(function (t) { return _this.teams = t; });
     };
+    PlayerComponent.prototype.teamSelected = function (team) {
+        var _this = this;
+        this.playerService.getPlayerByTeam(team.name).then(function (p) { return _this.players = p; });
+    };
     PlayerComponent.prototype.addPlayerToTeam = function () {
     };
     PlayerComponent = __decorate([
