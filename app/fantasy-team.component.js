@@ -9,24 +9,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var platform_browser_1 = require('@angular/platform-browser');
-var http_1 = require('@angular/http');
-var app_component_1 = require('./app.component');
-var players_component_1 = require('./players.component');
-var fantasy_team_component_1 = require('./fantasy-team.component');
-var AppModule = (function () {
-    function AppModule() {
+var FantasyTeamComponent = (function () {
+    function FantasyTeamComponent() {
     }
-    AppModule = __decorate([
-        core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule, http_1.HttpModule, http_1.JsonpModule],
-            declarations: [app_component_1.AppComponent, players_component_1.PlayerComponent, fantasy_team_component_1.FantasyTeamComponent],
-            providers: [],
-            bootstrap: [app_component_1.AppComponent]
+    FantasyTeamComponent = __decorate([
+        core_1.Component({
+            moduleId: module.id,
+            selector: 'fantasy-team',
+            templateUrl: 'fantasy-team.component.html'
         }), 
         __metadata('design:paramtypes', [])
-    ], AppModule);
-    return AppModule;
+    ], FantasyTeamComponent);
+    return FantasyTeamComponent;
 }());
-exports.AppModule = AppModule;
-//# sourceMappingURL=app.module.js.map
+exports.FantasyTeamComponent = FantasyTeamComponent;
+//# sourceMappingURL=fantasy-team.component.js.map

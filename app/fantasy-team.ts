@@ -2,6 +2,7 @@ import { Player } from './player';
 
 export class FantasyTeam {
     name: string;
-    value: number;
+    totalValue: number;
+
     players: Player[];
 }

@@ -7,6 +7,7 @@ import { Team } from './team';
 export class TeamsService {
 
     teams: Team[] = [
+        { name: 'All'},
         { name: 'Arsenal' },
         { name: 'Manchester City' },
         { name: 'Liverpool' }

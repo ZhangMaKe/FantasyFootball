@@ -10,29 +10,51 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
+var Observable_1 = require('rxjs/Observable');
 var PlayerService = (function () {
     function PlayerService(http) {
-        this.players = [
-            { id: 1, name: "Mesut Ozil", team: "Arsenal", number: 11, position: "MID", value: 10 },
-            { id: 2, name: "Alexis Sanchez", team: "Arsenal", number: 7, position: "ATT", value: 11.1 },
-            { id: 3, name: "Petr Cech", team: "Arsenal", number: 33, position: "GK", value: 7 },
-            { id: 4, name: "Laurent Koscielny", team: "Arsenal", number: 4, position: "DEF", value: 7.5 },
-            { id: 5, name: "Sergio Aguero", team: "Manchester City", number: 11, position: "ATT", value: 13 },
-            { id: 6, name: "Philipe Coutinho", team: "Liverpool", number: 10, position: "MID", value: 9.5 }
-        ];
+        this.http = http;
+        this.playersUrl = "http://localhost:5000/api/Players/GetAllPlayers";
+        this.playersByTeamUrl = "http://localhost:5000/api/Players/GetPlayerByTeam";
+        this.players = [];
     }
     PlayerService.prototype.getPlayers = function () {
-        return Promise.resolve(this.players);
+        return this.http.get(this.playersUrl)
+            .map(function (res) { return res.json(); })
+            .catch(this.handleError);
+        //return Promise.resolve(this.players);
     };
     PlayerService.prototype.getPlayerByTeam = function (team) {
-        var teamPlayers = new Array();
-        for (var _i = 0, _a = this.players; _i < _a.length; _i++) {
-            var player = _a[_i];
-            if (player.team == team) {
-                teamPlayers.push(player);
-            }
+        return this.http.get(this.playersByTeamUrl)
+            .map(function (res) { return res.json(); })
+            .catch(this.handleError);
+        // if (team == "All") {
+        //     return this.getPlayers();
+        // }
+        // let teamPlayers = new Array<Player>();
+        // for (let player of this.players) {
+        //     if (player.team == team) {
+        //         teamPlayers.push(player);
+        //     }
+        // }
+        // return Promise.resolve(teamPlayers);
+    };
+    PlayerService.prototype.extractData = function (res) {
+        var body = res.json();
+        return body.data || {};
+    };
+    PlayerService.prototype.handleError = function (error) {
+        var errMsg;
+        if (error instanceof http_1.Response) {
+            var body = error.json() || '';
+            var err = body.error || JSON.stringify(body);
+            errMsg = error.status + " - " + (error.statusText || '') + " " + err;
         }
-        return Promise.resolve(teamPlayers);
+        else {
+            errMsg = error.message ? error.message : error.toString();
+        }
+        console.error(errMsg);
+        return Observable_1.Observable.throw(errMsg);
     };
     PlayerService = __decorate([
         core_1.Injectable(), 

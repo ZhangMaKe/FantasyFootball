@@ -12,6 +12,7 @@ var core_1 = require('@angular/core');
 var TeamsService = (function () {
     function TeamsService() {
         this.teams = [
+            { name: 'All' },
             { name: 'Arsenal' },
             { name: 'Manchester City' },
             { name: 'Liverpool' }
