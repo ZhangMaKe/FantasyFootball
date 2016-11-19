@@ -25,7 +25,7 @@ var PlayerService = (function () {
         //return Promise.resolve(this.players);
     };
     PlayerService.prototype.getPlayerByTeam = function (team) {
-        return this.http.get(this.playersByTeamUrl)
+        return this.http.get(this.playersByTeamUrl + "?team=" + team)
             .map(function (res) { return res.json(); })
             .catch(this.handleError);
         // if (team == "All") {

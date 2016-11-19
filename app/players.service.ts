@@ -32,8 +32,8 @@ export class PlayerService {
         //return Promise.resolve(this.players);
     }
 
-    getPlayerByTeam(team: string): Observable<Player[]> {
-        return this.http.get(this.playersByTeamUrl)
+    getPlayerByTeam(team: string): Observable<Player[]> {        
+        return this.http.get(this.playersByTeamUrl + "?team=" + team)
             .map(res => res.json())
             .catch(this.handleError)
         

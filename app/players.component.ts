@@ -51,15 +51,6 @@ export class PlayerComponent implements OnInit {
         
         // this.playerService.getPlayerByTeam(team.name).then(p => this.players = p);
     }
-
-    alertMe(returnValue: Player[]): void {
-        alert(returnValue.length);
-        for(let player in returnValue)
-        {
-            alert(player);
-        }
-        
-    }
     
     addPlayerToTeam(player: Player): void {
         if((this.fantasyTeam.totalValue + player.value) > allowedValue) {

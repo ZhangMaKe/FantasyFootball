@@ -37,12 +37,6 @@ var PlayerComponent = (function () {
         });
         // this.playerService.getPlayerByTeam(team.name).then(p => this.players = p);
     };
-    PlayerComponent.prototype.alertMe = function (returnValue) {
-        alert(returnValue.length);
-        for (var player in returnValue) {
-            alert(player);
-        }
-    };
     PlayerComponent.prototype.addPlayerToTeam = function (player) {
         if ((this.fantasyTeam.totalValue + player.value) > allowedValue) {
         }
